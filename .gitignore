@@ -1,0 +1,34 @@
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# Python / Django
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3
+*.log
+*.pot
+*.mo
+
+# Media / Static
+media/
+staticfiles/
+
+# IDE / editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Coverage / test
+.coverage
+htmlcov/
+
+# PostgreSQL backups
+*.backup
