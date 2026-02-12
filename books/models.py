@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from books.choices import BookGenreChoices
@@ -24,6 +25,20 @@ class Book(models.Model):
     )
 
     publication_date = models.DateField()
+
+    cover_image = models.URLField(
+        max_length = 200,
+        blank = True,
+        null = True
+    )
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators = [MinValueValidator(0)],
+        default = 0,
+    )
+
 
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Book - Book Blog{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Edit Book</h2>
+    <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+        {{ field }}
+        </div>
+    {% endfor %}
+    </form>
+
+
+{% endblock content %}

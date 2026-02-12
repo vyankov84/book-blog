@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Book - Book Blog{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Add a New Book</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field}}  {# Bootstrap styling #}
+
+            {% if field.help_text %}
+                <div class="form-text">{{ field.help_text }}</div>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Add Book</button>
+    <a href="{% url 'books:index' %}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+{% endblock %}
