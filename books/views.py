@@ -40,3 +40,13 @@ def edit_book(request: HttpRequest, pk: int) -> HttpResponse:
 
     context = {'form': form}
     return render(request, 'books/book-add.html', context)
+
+def delete_book(request: HttpRequest, pk: int) -> HttpResponse:
+    book = get_object_or_404(Book, pk=pk)
+
+    if request.method == 'POST':
+        book.delete()
+        return redirect('books:index')
+
+    context = {'book': book}
+    return render(request, 'books/book-delete.html', context)

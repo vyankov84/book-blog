@@ -18,7 +18,8 @@
                     <p class="card-text"><strong>Genre:</strong> {{ book.genre }}</p>
                     <p class="card-text"><strong>Published on:</strong> {{ book.publication_date }}</p>
 
-                    <a href="#" class="btn btn-primary mt-2">Reviews</a>
+                    <a href="{% url 'reviews:book-reviews' book.pk%}" class="btn btn-primary mt-2">Reviews</a>
+                    <a href="{% url 'reviews:add-review' book.pk%}" class="btn btn-primary mt-2">Add Review</a>
                     <a href="{% url 'books:index' %}" class="btn btn-secondary mt-2">Back to all books</a>
                 </div>
             </div>

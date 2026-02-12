@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Reviews Book - Book Blog{% endblock %}
+
+{% block content %}
+    {% for review in reviews %}
+        <h2>Reviews for {{ book.title }}</h2>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"> {{ review.first_name }} {{ review.last_name }}</h5>
+                <p class="card-text"> {{ review.review_text }}</p>
+                <p>Rating: {{ review.rating }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p>No reviews yet</p>
+    {% endfor %}
+
+{% endblock content %}

@@ -17,6 +17,7 @@
                     <p class="card-text">Price: ${{ book.price }}</p>
                     <a href="{% url 'books:details' book.id %}" class="btn btn-primary">View Details</a>
                     <a href="{% url 'books:book-edit' book.pk %}" class="btn btn-primary"> Edit Book</a>
+                    <a href="{% url 'books:book-delete' book.pk %}" class="btn btn-primary"> Delete Book</a>
                 </div>
             </div>
         </div>
