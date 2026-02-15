@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Review{% endblock %}
+
+{% block content %}
+
+<h2>Edit Review</h2>
+    <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+        {{ field }}
+        </div>
+    {% endfor %}
+    <button class="btn btn-primary">
+        Save
+    </button>
+    <a href="{% url 'reviews:book-reviews' review.book.id %}" class="btn btn-primary">Cancel</a>
+    </form>
+
+{% endblock %}

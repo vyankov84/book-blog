@@ -3,13 +3,29 @@
 {% block title %}Reviews Book - Book Blog{% endblock %}
 
 {% block content %}
+
+<h2>Reviews for {{ book.title }}</h2>
+<p>⭐ {{ average_rating|floatformat:1 }} ({{ reviews_count }} reviews)</p>
+<hr>
+
     {% for review in reviews %}
-        <h2>Reviews for {{ book.title }}</h2>
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title"> {{ review.first_name }} {{ review.last_name }}</h5>
                 <p class="card-text"> {{ review.review_text }}</p>
-                <p>Rating: {{ review.rating }}</p>
+                <p>Rating: {{ review.rating }}
+                {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %}
+                        ⭐
+                    {% else %}
+                         ☆
+                    {% endif %}
+                   {% endfor %}
+                </p>
+            <p>
+                <a href="{% url 'reviews:edit-review' review.id%}">Edit Review</a>
+                <a href="{% url 'reviews:delete-review' review.id %}">Delete Review</a>
+            </p>
             </div>
         </div>
     {% empty %}
